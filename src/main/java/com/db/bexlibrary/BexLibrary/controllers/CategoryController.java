@@ -17,7 +17,7 @@ public class CategoryController {
     @Autowired
     public CategoryRepo categoryRepo;
 
-    @GetMapping(value = "/bookis")
+    @GetMapping(value = "/booksbycateg")
     public List<Category> generate(){
 
         return categoryRepo.findAll();

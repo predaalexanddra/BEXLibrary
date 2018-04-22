@@ -17,12 +17,15 @@ public class BooksController {
     public BookRepository bookRepo;
 
 
-    @GetMapping(value = "/book")
+    @GetMapping(value = "/books")
     public List<Book> findBooks(){
-
         return bookRepo.findAll();
-
-
     }
+
+    @GetMapping(value="/booksbyid/{id}")
+    public Book findBookByTitle(@PathVariable("id") Long id){
+        return bookRepo.findBookById(id);
+    }
+
 
 }

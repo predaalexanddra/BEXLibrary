@@ -17,7 +17,6 @@ public class AuthorController {
 
     @GetMapping(value = "/authors")
     public List<Author> generate(){
-
         return authorRepo.findAll();
     }
 }

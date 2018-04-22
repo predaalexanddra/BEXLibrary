@@ -34,4 +34,8 @@ public class Loan {
     @JoinColumn(name = "fk_loanBook")
     private Book loanBook;
 
+
+    public boolean isReturned() {
+        return isReturned;
+    }
 }
