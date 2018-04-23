@@ -73,4 +73,8 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public int getNoAvailableCopies() {
+        return noAvailableCopies;
+    }
 }

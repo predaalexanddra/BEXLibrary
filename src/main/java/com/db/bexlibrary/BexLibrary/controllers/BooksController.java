@@ -23,7 +23,7 @@ public class BooksController {
     }
 
     @GetMapping(value = "/booksbyid/{id}")
-    public Book findBookByTitle(@PathVariable("id") Long id) {
+    public Book findBookById(@PathVariable("id") Long id) {
         return bookRepo.findBookById(id);
     }
 

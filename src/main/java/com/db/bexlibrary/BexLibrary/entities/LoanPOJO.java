@@ -2,16 +2,17 @@ package com.db.bexlibrary.BexLibrary.entities;
 
 public class LoanPOJO {
 
-    private int bookId;
+    private Long bookId;
     private String bookTitle;
     private int bookPeriod;
+    private String userEmail;
 
 
-    public int getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(int bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
@@ -29,5 +30,13 @@ public class LoanPOJO {
 
     public void setBookPeriod(int bookPeriod) {
         this.bookPeriod = bookPeriod;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

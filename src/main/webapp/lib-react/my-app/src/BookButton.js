@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import fetch from 'isomorphic-fetch';
 
 
 const customStyles = {
@@ -59,7 +60,8 @@ class BookButton extends Component {
         const loan = {
             bookId: id,
             bookTitle: title,
-            bookPeriod: number(period)
+            bookPeriod: Number(period),
+            userEmail:"aliprd1996@gmail.com"
         };
         this.postLoan(loan);
         this.closeModal();

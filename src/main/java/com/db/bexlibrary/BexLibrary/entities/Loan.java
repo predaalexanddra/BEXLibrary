@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Data
@@ -18,9 +19,9 @@ public class Loan {
     @Column(name = "id") private int id;
 
     @NotNull
-    private Date borrowDate;
+    private Timestamp borrowDate;
     @NotNull
-    private Date returnDate;
+    private Timestamp returnDate;
     @NotNull
     private boolean isReturned = false;
 
@@ -48,19 +49,19 @@ public class Loan {
         this.id = id;
     }
 
-    public Date getBorrowDate() {
+    public Timestamp getBorrowDate() {
         return borrowDate;
     }
 
-    public void setBorrowDate(Date borrowDate) {
+    public void setBorrowDate(Timestamp borrowDate) {
         this.borrowDate = borrowDate;
     }
 
-    public Date getReturnDate() {
+    public Timestamp getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(Timestamp returnDate) {
         this.returnDate = returnDate;
     }
 

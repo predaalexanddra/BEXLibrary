@@ -6,7 +6,8 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-modal": "^3.4.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "isomorphic-fetch": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
