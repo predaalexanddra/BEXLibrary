@@ -18,4 +18,5 @@ public interface BookRepository extends JpaRepository<Book,Long> {
         List<Book> findBookByTitle(String title);
 //        @Query("select all from book where noAvailableCopies!=0")
 //        List<Book> existingBooks();
+        Book findBookById(int id);
 }

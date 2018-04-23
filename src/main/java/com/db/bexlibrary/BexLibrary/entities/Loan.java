@@ -2,6 +2,7 @@ package com.db.bexlibrary.BexLibrary.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -37,5 +38,49 @@ public class Loan {
 
     public boolean isReturned() {
         return isReturned;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public void setReturned(boolean returned) {
+        isReturned = returned;
+    }
+
+    public User getLoanUser() {
+        return loanUser;
+    }
+
+    public void setLoanUser(User loanUser) {
+        this.loanUser = loanUser;
+    }
+
+    public Book getLoanBook() {
+        return loanBook;
+    }
+
+    public void setLoanBook(Book loanBook) {
+        this.loanBook = loanBook;
     }
 }

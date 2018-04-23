@@ -37,7 +37,7 @@ public class ServletConfig implements WebMvcConfigurer {
     @Bean
     public FreeMarkerConfigurer getFreeMarkerConfigurer() {
         FreeMarkerConfigurer freeMarkerConfig = new FreeMarkerConfigurer();
-        freeMarkerConfig.setTemplateLoaderPath("classpath:/pages/");
+        freeMarkerConfig.setTemplateLoaderPath("classpath:../lib-react/my-app/public");
         freeMarkerConfig.setDefaultEncoding("UTF-8");
         return freeMarkerConfig;
     }
