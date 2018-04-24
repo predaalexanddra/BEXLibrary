@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import fetch from 'isomorphic-fetch';
 
 
 const customStyles = {
@@ -19,7 +18,7 @@ Modal.setAppElement(document.getElementById('body'));
 class BookButton extends Component {
 
     constructor() {
-
+        //this.checkIfIsLoggedIn()
         super();
         this.state = {
             modalIsOpen: false,
@@ -44,7 +43,6 @@ class BookButton extends Component {
 
 
     postLoan(loan) {
-        console.log('I am here');
         fetch('http://localhost:8080/loans', {
             method: 'post',
             headers: {
@@ -60,7 +58,7 @@ class BookButton extends Component {
         const loan = {
             bookId: id,
             bookTitle: title,
-            bookPeriod: Number(period),
+            bookPeriod: period,
             userEmail:"aliprd1996@gmail.com"
         };
         this.postLoan(loan);

@@ -1,32 +1,42 @@
 package com.db.bexlibrary.BexLibrary.controllers;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.db.bexlibrary.BexLibrary.entities.GlobalVariables;
+import com.db.bexlibrary.BexLibrary.entities.User;
+import com.db.bexlibrary.BexLibrary.entities.UserPOJO;
+import com.db.bexlibrary.BexLibrary.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-public class LoginController extends DefaultController {
+@Controller
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+public class LoginController{
+    @Autowired
+    UserRepository userRepository;
 
-    @RequestMapping(value = "/login", method = {RequestMethod.POST,RequestMethod.GET})
-    public String getLogin() {
-        //model.addAttribute("isLoggedIn", isLoggedIn());
-        //super.setTemplate(model, "index.html");
-        return "dashboard";
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<String> getLogin(@RequestBody UserPOJO userPOJO) {
 
-    }
+        User user = userRepository.findUserByEmail(userPOJO.getUserEmail());
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHomePage(Model model) {
-        model.addAttribute("isLoggedIn", isLoggedIn());
-
-        if (isLoggedIn() == true && super.getCurrentUser().getAuthorities().stream().anyMatch(o -> o.getAuthority().equals("ROLE_ADMIN"))) {
-            super.setTemplate(model, "dashboard.html");
-        } else {
-            super.setTemplate(model, "index.html");
+        if (user.getPassword().equals(userPOJO.getPassword())) {
+            GlobalVariables.getInstance().setEmail(userPOJO.getUserEmail());
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        return "index2";
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+    @Bean
+    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("user"));
+    }
 
 }

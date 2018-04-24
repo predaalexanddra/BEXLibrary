@@ -8,19 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
   <link href="https://fonts.googleapis.com/css?family=Montez|Montserrat|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="<@spring.url '/resources/css/plugins/bootstrap.css'/>">
-  <link rel="stylesheet" href="<@spring.url '/resources/css/plugins/bootstrap-grid.css'/>">
-  <link rel="stylesheet" href="<@spring.url '/resources/css/plugins/bootstrap-reboot.css'/>">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
-  <link href="https://fonts.googleapis.com/css?family=Montez|Montserrat|Roboto" rel="stylesheet">
-
-  <script type="text/javascript" src="<@spring.url '/resources/js/plugins/jquery-3.3.1.js'/>"></script>
-  <script type="text/javascript" src="<@spring.url '/resources/js/plugins/bootstrap.js'/>"></script>
-
-
-  <link rel="stylesheet" href="<@spring.url '/resources/css/style.css'/>">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -36,27 +23,16 @@
         <img class="deustche__logo" src="img/deutscheLogo.png" />
       </div>
       <!-- search -->
-      <input class="search" type="text" name="search" placeholder="Search..">
-
+      <div id="search__div">
+          <input class="search" type="text" name="search" placeholder="Search.." />
+      </div>
       <!-- user Container -->
       <div class="user__img" data-toggle="collapse" href="#collapse1"></div>
-      <!--<#if isLoggedIn == false>-->
-      <!-- user Container -->
-      <div class="user__img" data-toggle="collapse" href="#collapse1"></div>
-      <div id="login_form" >
-      <!--<div id="collapse1" class="user-collapse collapse">-->
-        <!---->
-        <!--<form action="/login"  method="POST">-->
-          <!--<input id="account-username" type="text" name="username" placeholder="user">-->
-          <!--<input id="account-password" type="password" name="password"-->
-                 <!--placeholder="password">-->
-          <!--<button onClick={} class="account login__button btn btn-outline-success">Login</button>-->
-        <!--</form>-->
-      <!--</div>-->
-      <!--<#else>-->
-      <a href="logout.html" class="btn btn-outline-danger">Logout</a>
-    <!--</#if>-->
-
+      <div id="collapse1" class="user-collapse collapse">
+        <!-- <input class="account user" type="text" name="firstname" placeholder="user">
+        <input class="account password" type="password" name="firstname" placeholder="password">
+        <button class="account login__button">LOGIN</button> -->
+      </div>
     </div>
     <!-- Introduction picture -->
     <img class="main__img" src="img/bex.jpg" alt="">

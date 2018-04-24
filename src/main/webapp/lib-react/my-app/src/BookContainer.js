@@ -9,7 +9,7 @@ class BookContainer extends Component{
         }
 
         componentDidMount() {
-            fetch('http://localhost:8080/booksbycateg')
+            fetch('http://localhost:8080/categories')
                 .then(response => response.json())
                 .then(posts =>{ 
                     this.setState({posts})

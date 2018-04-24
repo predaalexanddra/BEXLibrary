@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import BookContainer from './BookContainer';
-import LoginForm from './LoginForm';
+import Search from './Search';
+import Login from './Login';
 
 ReactDOM.render(<BookContainer />, document.getElementById('book__container'));
-ReactDOM.render(<LoginForm />, document.getElementById('login_form'));
+ReactDOM.render(<Search />, document.getElementById("search__div"));
+ReactDOM.render(<Login />, document.getElementById("collapse1"));
 

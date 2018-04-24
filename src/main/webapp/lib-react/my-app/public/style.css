@@ -65,7 +65,11 @@ html{
     height: 49px;
 }
 
-.search[type=text] {
+search__div{
+    width:20px;
+}
+
+.search {
     width: 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -81,8 +85,8 @@ html{
     cursor: pointer;
 }
 
-.search[type=text]:focus {
-    width: 20%;
+.search:focus {
+    width: 100%;
 }
 
 .account{

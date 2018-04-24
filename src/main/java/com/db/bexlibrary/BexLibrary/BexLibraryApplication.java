@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @EnableAutoConfiguration
+@EnableScheduling
 @SpringBootApplication
 @EntityScan(basePackages = "com/db/bexlibrary/BexLibrary/entities")
 @ComponentScan(basePackages = "com.db.bexlibrary.BexLibrary")

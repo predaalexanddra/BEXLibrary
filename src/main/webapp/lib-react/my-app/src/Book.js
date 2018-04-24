@@ -27,7 +27,7 @@ class Book extends Component {
                         <h2 className="book__rating">{this.props.rating ? this.props.rating : '0.0'}</h2>
                         <p className="book__paragraph">{this.props.title}</p>
                         <div className="book__button">
-                            <BookButon id={this.props.id}  />
+                            <BookButon id={this.props.id} title={this.props.title}  />
                         </div>
                     </div>
                 </div>
