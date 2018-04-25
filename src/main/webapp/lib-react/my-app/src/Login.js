@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
-// import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 class Login extends Component {
 
     constructor() {
+        // const cookies = new Cookies();
         super();
         this.state = {
-            // userId : cookie.load("onboarded"),
             email: '',
             pass: '',
             isLogged : false
-        }
+        };
+        this.checkIfIsLoggedIn();
+
     }
 
+    checkIfIsLoggedIn(){
+        fetch('http://localhost:8080/isLoggedIn')
+            .then(response => response.json())
+            .then(isLogged => {
+                console.log(isLogged);
+                this.debug(isLogged)
+            });
+    }
+
+    debug(response){
+        this.setState({isLogged: response})
+    }
+
+
+
     doLogin(account) {
+        // this.cookies.set('email', 'andrei', { path: '/' })
         fetch('http://localhost:8080/login', {
             method: 'post',
             headers: {
@@ -27,9 +45,10 @@ class Login extends Component {
     processLoginResponse(status) {
         switch(status) {
             case 200: this.setState({isLogged: true});
+                      window.location.reload();
                         break;
-            default: 
-                alert('Incorrect username or password');
+            default:
+                alert('Incorrect username or password! Please provide the proper credentials for authentication.');
         }
     }
 
@@ -64,25 +83,28 @@ class Login extends Component {
     logInTab(){
         return(
         <div>
-            <button onClick={event => this.changeLoginState(event)}>LOGOUT</button>
+            <p id="loggedIn">{this.state.email}</p>
+            <button className="logout__btn" onClick={event => this.changeLoginState(event)}>LOGOUT</button>
         </div>);
     }
 
     notLoggeInTab(){
         return(
-        <div>
-            <input class="account user" type="text" name="firstname" placeholder="user" onChange={event => this.setUserEmail(event)} />
-            <input class="account password" type="password" name="firstname" placeholder="password" onChange={event => this.setUserPassword(event)} />
-            <button class="account login__button" onClick={event => this.loginSubmit(event)}>LOGIN</button>
+        <div className = "login__button__react">
+            <input className="account user" type="text" name="firstname" placeholder="user" onChange={event => this.setUserEmail(event)} />
+            <input className="account password" type="password" name="firstname" placeholder="password" onChange={event => this.setUserPassword(event)} />
+            <button className="account login__button" onClick={event => this.loginSubmit(event)}>LOGIN</button>
         </div>);
     }
 
     changeLoginState(event){
+        fetch('http://localhost:8080/logOut');
         this.setState({
             email: '',
             pass: '',
             isLogged : false
         })
+        window.location.reload()
     }
 
     render() {

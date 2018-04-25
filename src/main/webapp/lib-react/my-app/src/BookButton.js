@@ -18,19 +18,27 @@ Modal.setAppElement(document.getElementById('body'));
 class BookButton extends Component {
 
     constructor() {
-        //this.checkIfIsLoggedIn()
+
         super();
         this.state = {
             modalIsOpen: false,
-            bookPeriod: 0
+            bookPeriod: 0,
+            email: ''
         };
-
+        this.verifyLogin();
         this.openModal = this.openModal.bind(this);
         // this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
 
     }
 
+
+    verifyLogin() {
+        const email = document.getElementById('loggedIn');
+        if (email && email.content) {
+            this.setState({ email: email.content });
+        }
+    }
 
     openModal() {
         this.setState({ modalIsOpen: true });
@@ -43,7 +51,7 @@ class BookButton extends Component {
 
 
     postLoan(loan) {
-        fetch('http://localhost:8080/loans', {
+        fetch('http://localhost:3000/loans', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,8 +66,7 @@ class BookButton extends Component {
         const loan = {
             bookId: id,
             bookTitle: title,
-            bookPeriod: period,
-            userEmail:"aliprd1996@gmail.com"
+            bookPeriod: period
         };
         this.postLoan(loan);
         this.closeModal();
@@ -74,11 +81,23 @@ class BookButton extends Component {
         // console.log(this.state);
     }
 
+
+    // showSubmit() {
+    //     const email = document.getElementById("loggedIn");
+    //     console.log(email);
+    //     if (email && email.innerHTML !== '') {
+    //         console.log(email.innerHTML);
+    //         return (<button onClick={this.openModal}>Open Modal</button>);
+
+    //     }
+
+    // }
+
     render() {
         return (
             <div>
-
-                <button onClick={this.openModal}>Open Modal</button>
+                {/* {this.showSubmit()} */}
+                <button id="modal__btn" onClick={this.openModal}>Rent</button>
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.state.closeModal}
@@ -98,8 +117,8 @@ class BookButton extends Component {
                                         <input type="radio" className="form__input" name="period" value="2" /> 2 Weeks
                                         <br />
                                         <input type="radio" className="form__input" name="period" value="3" /> 3 Weeks
-                                        <div className="submit__button">
-                                            <button className="button" type="button"  onClick={event => this.loanSubmit(event,this.props.id, this.props.title)}>Submit</button>
+                                        <div className="submit__button" >
+                                            <button className="button" type="button" onClick={event => this.loanSubmit(event, this.props.id, this.props.title)}>Submit</button>
                                         </div>
                                     </form>
                                 </div>

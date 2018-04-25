@@ -44,18 +44,19 @@ html{
 
 .user__img{
     width: 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    border: none;
     background-color: white;
     background-image: url('img/user2.png');
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
+}
+.login__button__react{
+    width: 20px;
+    
+    font-size: 16px;
     cursor: pointer;
 }
-
 .collapse{
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
@@ -126,15 +127,32 @@ h2{
     border-radius: 4px;
     font-size: 16px;
     /* background-color:rgb(138, 136, 136); */
-    background-color:#191919;
+    background-color:white;
 }
-
+#modal__btn{
+    background-color: #2756f0;
+    
+}
+#modal__btn:active{
+    background-color: #5633f0;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.logout__btn{
+    background-color: #2756f0;
+    height:40px;
+}
+.logout__btn:active{
+    background-color: #5633f0;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
 .login__button{
-    background-color: #f0f027;
+    background-color: #2756f0;
 }
 
 .login__button:active {
-    background-color: #f0f033;
+    background-color: #5633f0;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
@@ -314,7 +332,7 @@ h2{
     height:280px;
     background:#fff;
     float:left;
-    margin: 30px 35px 25px 0;
+    margin: 30px 100px 25px 0;
     cursor:pointer;
     transform: scale(1);
     visibility:visible;
@@ -326,6 +344,7 @@ h2{
   }
   
   .card:hover{
+      /* margin-right:30px; */
     cursor:pointer;
     width:400px;
     transform: scale(1);
@@ -342,6 +361,7 @@ h2{
 
 .book__img{
     visibility: visible;
+
 }
   
    .inside-top{
@@ -365,7 +385,7 @@ h2{
   .book__paragraph{
     display: flex; 
     justify-content: center;
-    font-family: 'Montez';
+    font-family: 'Montserrat';
     font-size:17px;
     margin: 0 10px 0 0;
   }
@@ -373,10 +393,18 @@ h2{
   .book__button{
       display: flex;
       justify-content: flex-end;
-      margin: 0 10px 0 0;
+      margin:100px 10px 10px 100px;
+      /* width:90px;
+      height: 50px; */
   }
   
-
+#modal__btn{
+    width:70px;
+    height: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+}
   
   .modal-container{
     width: 1000px;
@@ -429,5 +457,13 @@ h2{
     background-color:#F46565;
     font-family: 'Montserrat', sans-serif;
 }
+.book__summary{
+  margin-top:10px;
 
+}
 
+#book__img{
+
+    width:200px;
+    height:340px;
+}

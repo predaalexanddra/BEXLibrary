@@ -3,17 +3,21 @@ import BookButon from './BookButton';
 
 class Book extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     // this.state = { posts: []}; // {}
-    // }
 
-    // componentDidMount() {
-    //     console.log('here');
-    //     fetch('http://localhost:3000/books')
-    //         .then(response => response.json())
-    //         .then(posts =>this.setState({posts}));
-    // }
+    checkAvalability(avalability){
+        if(avalability > 0){
+            return <h2>Available</h2>
+        } else {
+            return  <h2>Unavailable</h2>
+        }
+
+    }
+
+    putButtonIfAvailable(isLogged,idh, titleh,avail){
+        if(avail >0 && isLogged)
+            return <BookButon id={idh} title={titleh}  />
+    }
+
 
     render() {
         // const title = this.state.posts.map(post => <h2>{post.title}</h2>);
@@ -21,14 +25,20 @@ class Book extends Component {
             <li className="card">
                 <div className="inside-top">
                     <div className="book__img">
-                        <img src="/img/book.jpg" alt="ceva"/>
+                    <img id="book__img"src={"/books_img/id"+this.props.id+".jpeg"} alt="ceva"/>
                     </div>
                     <div className="book__summary">
-                        <h2 className="book__rating">{this.props.rating ? this.props.rating : '0.0'}</h2>
-                        <p className="book__paragraph">{this.props.title}</p>
-                        <div className="book__button">
-                            <BookButon id={this.props.id} title={this.props.title}  />
+                        <div>
+                            {this.checkAvalability(this.props.avalability)}
                         </div>
+                        <div>
+                            <p className="book__paragraph">{this.props.title}</p>
+                        </div>
+                        <div className="book__button">
+                            {this.putButtonIfAvailable(this.props.isLogged,this.props.id, this.props.title, this.props.avalability)}
+                            {/* <BookButon id={this.props.id} title={this.props.title}/> */}
+                        </div>
+
                     </div>
                 </div>
             </li>

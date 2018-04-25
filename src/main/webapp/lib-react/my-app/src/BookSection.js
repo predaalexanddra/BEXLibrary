@@ -14,7 +14,7 @@ class BookSection extends Component {
                 <div className="book__selector">
                     <div id="wrapper">
                         <div className="module-section clearfix">
-                            <Booklist title={this.props.booklist} />
+                            <Booklist isLogged = {this.props.isLogged} title={this.props.booklist} />
                         </div>
                     </div>
                 </div>

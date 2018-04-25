@@ -3,28 +3,44 @@ import BookSection from './BookSection';
 
 class BookContainer extends Component{
 
-        constructor(props){
-            super(props);
-            this.state = {posts: []};
-        }
+    constructor(props){
+        super(props);
+        this.state = {
+            isLogged : false,
+            posts: []
+        };
+        this.checkIfIsLoggedIn();
+    }
 
-        componentDidMount() {
-            fetch('http://localhost:8080/categories')
-                .then(response => response.json())
-                .then(posts =>{ 
-                    this.setState({posts})
-                    
-                });
-        }
+    checkIfIsLoggedIn(){
+        fetch('http://localhost:8080/isLoggedIn')
+            .then(response => response.json())
+            .then(isLogged => {
+                console.log(isLogged);
+                this.debug(isLogged)
+            });
+    }
+    debug(isLogged){
+        this.setState({isLogged: isLogged})
+    }
 
-        render() {
-            const booksections = this.state.posts.map(post =>  <BookSection booklist={post.booklist} category={post.categoryName}  />);
-            return (
-                <div id="content" className="book__section">
-                    {booksections}
-                </div>
-            );
-        }
+    componentDidMount() {
+        fetch('http://localhost:8080/categories')
+            .then(response => response.json())
+            .then(posts =>{
+                this.setState({posts})
+
+            });
+    }
+
+    render() {
+        const booksections = this.state.posts.map(post =>  <BookSection isLogged= {this.state.isLogged} booklist={post.booklist} category={post.categoryName}  />);
+        return (
+            <div id="content" className="book__section">
+                {booksections}
+            </div>
+        );
+    }
 }
 
 export default BookContainer;
