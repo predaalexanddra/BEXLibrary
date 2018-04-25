@@ -22,7 +22,7 @@ public class SearchController {
         List<Book> results=new ArrayList<>();
         System.out.println(title);
 
-        results.addAll( bookRepo.findBooksByAuthorLike(title));
+       // results.addAll( bookRepo.findBooksByAuthorLike(title));
         results.addAll(bookRepo.findBooksByTitleContaining(title));
         System.out.println(results);
         return results;

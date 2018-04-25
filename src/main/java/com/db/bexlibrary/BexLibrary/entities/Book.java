@@ -76,4 +76,8 @@ public class Book {
     public int getNoAvailableCopies() {
         return noAvailableCopies;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -47,11 +47,12 @@ class BookButton extends Component {
     closeModal() {
         // fetch de post
         this.setState({ modalIsOpen: false });
+        window.location.reload();
     }
 
 
     postLoan(loan) {
-        fetch('http://localhost:3000/loans', {
+        fetch('http://localhost:8080/loans', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

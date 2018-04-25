@@ -14,9 +14,24 @@ class Search extends Component {
 
     }
 
+    checkIfIsLoggedIn(){
+        fetch('http://localhost:8080/isLoggedIn')
+            .then(response => response.json())
+            .then(isLogged => {
+                console.log(isLogged);
+                this.debug(isLogged)
+            });
+    }
+    debug(isLogged){
+        this.setState({isLogged: isLogged})
+    }
+
+
     onKeyDown(event) {
         if (event.key === 'Enter') {
             this.enterKeyPressed = true;
+            this.checkIfIsLoggedIn();
+
             const value = event.target.value;
             fetch(`http://localhost:8080/search?title=${value}`, {
                 method: 'get'
@@ -37,7 +52,7 @@ class Search extends Component {
         <div className="book__selector">
             <div id="wrapper">
                 <div className="module-section clearfix">
-                    <Booklist title={foundBooks} />
+                    <Booklist isLogged= {this.state.isLogged} title={foundBooks} />
                 </div>
             </div>
         </div>

@@ -22,21 +22,13 @@ public class LoginController{
     public ResponseEntity<String> getLogin(@RequestBody UserPOJO userPOJO) {
 
         User user = userRepository.findUserByEmail(userPOJO.getUserEmail());
+        boolean ok=new BCryptPasswordEncoder().matches(userPOJO.getPassword(),user.getPassword());
 
-        if (user.getPassword().equals(userPOJO.getPassword())) {
+        if (ok) {
             GlobalVariables.getInstance().setEmail(userPOJO.getUserEmail());
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("user"));
-    }
-
 }

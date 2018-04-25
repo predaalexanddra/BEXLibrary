@@ -59,7 +59,7 @@ public class LoanController {
 
             loanRepo.save(loan);
             mailSender.sendMail("bexlibrary18@gmail.com", user.getEmail(), "Confirmation email", confirmMail);
-
+            bookRepo.updateBook(book.getId());
 
         }
 
