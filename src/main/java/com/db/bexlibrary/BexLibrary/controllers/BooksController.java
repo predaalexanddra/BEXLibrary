@@ -3,14 +3,12 @@ package com.db.bexlibrary.BexLibrary.controllers;
 import com.db.bexlibrary.BexLibrary.entities.Book;
 import com.db.bexlibrary.BexLibrary.entities.GlobalVariables;
 import com.db.bexlibrary.BexLibrary.repositories.BookRepository;
+import com.db.bexlibrary.BexLibrary.service.BookService;
 import jdk.nashorn.internal.objects.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +18,10 @@ public class BooksController {
 
 
     @Autowired
-    public BookRepository bookRepo;
+    private BookRepository bookRepo;
+
+    @Autowired
+    private BookService bookService;
 
 
     @GetMapping(value = "/books")
@@ -40,9 +41,9 @@ public class BooksController {
     }
 
 
-    @GetMapping(value = "/booksbyid/{id}")
-    public Book findBookById(@PathVariable("id") Long id) {
-        return bookRepo.findBookById(id);
+    @GetMapping(value = "/booksbyauthor")
+    public List<Book> findBookByAuthor(@RequestParam(name="name")String name) {
+        return bookService.findBooksByAuthorName(name);
     }
 
 
